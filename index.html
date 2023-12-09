@@ -155,30 +155,30 @@
           ul.appendChild(li);
         }
         document.querySelector(".ResponseDiv").innerHTML="Trying to call api"
-        const options = {
-          method: "POST",
-          url: "https://api.edenai.run/v2/ocr/invoice_parser",
-          headers: {
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTkxOWI0M2MtNmM5OS00ZGU2LThkMGYtMGQ1YWNkMDdjNmFlIiwidHlwZSI6ImFwaV90b2tlbiJ9.53StEax39Q6UD92JCmeK5N0r7mwXRAIP7XHG-o-f3Ps",
-            'Content-Type': 'application/json', // Add Content-Type header
-          },
-          data: {
-            providers: "amazon",
-            language: "en",
-            file_url: url,
-            fallback_providers: "",
-          },
-        };
-        axios
-          .request(options)
-          .then((response) => {
-            console.log('API response:', response.data);
-              // Display API response and remove other elements on the page
-            document.querySelector('.ResponseDiv').innerHTML = <div>API Response: ${JSON.stringify(response.data)}</div>;
-        })
-        .catch(error => {
-          console.error('Error in API request:', error);
-        });
+        // const options = {
+        //   method: "POST",
+        //   url: "https://api.edenai.run/v2/ocr/invoice_parser",
+        //   headers: {
+        //     Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTkxOWI0M2MtNmM5OS00ZGU2LThkMGYtMGQ1YWNkMDdjNmFlIiwidHlwZSI6ImFwaV90b2tlbiJ9.53StEax39Q6UD92JCmeK5N0r7mwXRAIP7XHG-o-f3Ps",
+        //     'Content-Type': 'application/json', // Add Content-Type header
+        //   },
+        //   data: {
+        //     providers: "amazon",
+        //     language: "en",
+        //     file_url: url,
+        //     fallback_providers: "",
+        //   },
+        // };
+        // axios
+        //   .request(options)
+        //   .then((response) => {
+        //     console.log('API response:', response.data);
+        //       // Display API response and remove other elements on the page
+        //     document.querySelector('.ResponseDiv').innerHTML = <div>API Response: ${JSON.stringify(response.data)}</div>;
+        // })
+        // .catch(error => {
+        //   console.error('Error in API request:', error);
+        // });
        
       }
   
