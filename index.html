@@ -15,7 +15,7 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      background-image: url('https://assets-global.website-files.com/5aa16619a722600001c19c3f/5c76e19a3df091b6d472af18_How-to-Scan-NFC-Header.png');
+      background-image: url('https://assets-global.website-files.com/5aa16619a722600001c19c3f/5c76e19a3df091b6d472af18_How-to-Scan-NFC-Header.png'); /* Replace 'your-background-image.jpg' with the path to your image */
       background-size: cover;
       background-position: center;
     }
@@ -80,7 +80,6 @@
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
   <script>
     let ndef;
@@ -121,7 +120,6 @@
           NFCResults = [];
           NFCResults = NFCResults.concat(event.message.records);
           displayNFCResults();
-          // Assuming the URL is obtained from the first record
           const urlRecord = NFCResults[0];
           const buf = urlRecord.data.buffer;
           const url = new TextDecoder().decode(buf);
@@ -135,7 +133,7 @@
       }).then(() => {
         console.log("Scan started successfully.");
       }).catch(error => {
-        console.log("Error! Scan failed to start: ${error}.");
+        console.log(`Error! Scan failed to start: ${error}.`);
       });
     }
 
@@ -157,7 +155,6 @@
       const ul = document.getElementById("NFC-results");
       ul.innerHTML = "";
     }
-
     function callApiWithUrl(url) {
         const options = {
         method: "POST",
@@ -172,16 +169,15 @@
           fallback_providers: "",
         },
       };
-      axios
-        .request(options)
+      axios(options)
         .then((response) => {
           console.log('API response:', response.data);
           // Display API response and remove other elements on the page
-          document.querySelector('.app').innerHTML = <div>API Response: ${JSON.stringify(response.data)} url: ${url}</div>;
+          document.querySelector('.app').innerHTML = <div>API Response: ${JSON.stringify(response.data)} URL: ${url}</div>;
         })
         .catch(error => {
+            
           console.error('Error in API request:', error);
-          document.querySelector('.app').innerHTML = <div>url: ${url}</div>;
         });
     }
   </script>
