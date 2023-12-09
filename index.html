@@ -159,7 +159,7 @@
         method: "POST",
         headers: {
           Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTkxOWI0M2MtNmM5OS00ZGU2LThkMGYtMGQ1YWNkMDdjNmFlIiwidHlwZSI6ImFwaV90b2tlbiJ9.53StEax39Q6UD92JCmeK5N0r7mwXRAIP7XHG-o-f3Ps",
-          'Content-Type': 'application/json', // Add Content-Type header
+          // 'Content-Type': 'application/json', // Add Content-Type header
         },
         body: JSON.stringify({
           providers: "amazon",
@@ -174,10 +174,11 @@
         .then(data => {
           console.log('API response:', data);
           // Display API response and remove other elements on the page
-          //document.querySelector('.app').innerHTML = <div>API Response: ${JSON.stringify(data)} URL: ${url}</div>;
+          document.querySelector('.ResponseDiv').innerHTML = <div>"success"</div>;
         })
         .catch(error => {
           console.error('Error in API request:', error);
+          document.querySelector('.ResponseDiv').innerHTML = <div>"error"</div>;
         });
        
       }
