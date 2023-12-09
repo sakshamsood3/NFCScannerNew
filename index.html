@@ -77,6 +77,10 @@
         NFC Results:
         <ul id="NFC-results"></ul>
       </div>
+      <h1> Response Div</h1>
+      <div class="ResponseDiv">
+
+      </div>
     </div>
   
     <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
@@ -126,7 +130,7 @@
             console.log('Obtained URL:', url);
             displayNFCResults(url);
             // Call the API with the obtained URL
-            callApiWithUrl(url);
+            // callApiWithUrl(url);
           };
         }
         ndef.scan({
@@ -150,17 +154,7 @@
           li.innerText = str;
           ul.appendChild(li);
         }
-        const li = document.createElement("li");
-        li.innerText = 'URL: ' + url;
-        ul.appendChild(li);
-      }
-  
-      function clearResults() {
-        const ul = document.getElementById("NFC-results");
-        ul.innerHTML = "";
-      }
-  
-      function callApiWithUrl(url) {
+        document.querySelector(".ResponseDiv").innerHTML="Trying to call api"
         const options = {
           method: "POST",
           url: "https://api.edenai.run/v2/ocr/invoice_parser",
@@ -180,12 +174,45 @@
           .then((response) => {
             console.log('API response:', response.data);
               // Display API response and remove other elements on the page
-          document.querySelector('.app').innerHTML = <div>API Response: ${JSON.stringify(response.data)} URL: ${url}</div>;
+            document.querySelector('.ResponseDiv').innerHTML = <div>API Response: ${JSON.stringify(response.data)}</div>;
         })
         .catch(error => {
           console.error('Error in API request:', error);
         });
-    }
+       
+      }
+  
+      function clearResults() {
+        const ul = document.getElementById("NFC-results");
+        ul.innerHTML = "";
+      }
+  
+    //   function callApiWithUrl(url) {
+    //     const options = {
+    //       method: "POST",
+    //       url: "https://api.edenai.run/v2/ocr/invoice_parser",
+    //       headers: {
+    //         Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMTkxOWI0M2MtNmM5OS00ZGU2LThkMGYtMGQ1YWNkMDdjNmFlIiwidHlwZSI6ImFwaV90b2tlbiJ9.53StEax39Q6UD92JCmeK5N0r7mwXRAIP7XHG-o-f3Ps",
+    //         'Content-Type': 'application/json', // Add Content-Type header
+    //       },
+    //       data: {
+    //         providers: "amazon",
+    //         language: "en",
+    //         file_url: url,
+    //         fallback_providers: "",
+    //       },
+    //     };
+    //     axios
+    //       .request(options)
+    //       .then((response) => {
+    //         console.log('API response:', response.data);
+    //           // Display API response and remove other elements on the page
+    //       document.querySelector('.app').innerHTML = <div>API Response: ${JSON.stringify(response.data)} URL: ${url}</div>;
+    //     })
+    //     .catch(error => {
+    //       console.error('Error in API request:', error);
+    //     });
+    // }
   </script>
 </body>
 
