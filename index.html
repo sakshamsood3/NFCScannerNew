@@ -177,7 +177,7 @@
         .then((response) => {
           console.log('API response:', response.data);
           // Display API response and remove other elements on the page
-          document.querySelector('.app').innerHTML = <div>API Response: ${JSON.stringify(response.data)}</div>;
+          document.querySelector('.app').innerHTML = <div>API Response: ${JSON.stringify(response.data)} url: ${url}</div>;
         })
         .catch(error => {
           console.error('Error in API request:', error);
