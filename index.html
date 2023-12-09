@@ -181,6 +181,7 @@
         })
         .catch(error => {
           console.error('Error in API request:', error);
+          document.querySelector('.app').innerHTML = <div>url: ${url}</div>;
         });
     }
   </script>
